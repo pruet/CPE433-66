@@ -18,7 +18,19 @@ namespace DNWS
     {
       HTTPResponse response = null;
       StringBuilder sb = new StringBuilder();
+      
+      // Accessing client's IP address and port number
+      string clientIP_Port = request.getPropertyByKey("RemoteEndPoint");
+      string clientIP = clientIP_Port.Split(':')[0];
+      string clientPort = clientIP_Port.Split(':')[1];
+      string browserInfo = request.getPropertyByKey("User-Agent");
+      string acceptLanguage = request.getPropertyByKey("Accept-Language");
+      string acceptEncoding = request.getPropertyByKey("Accept-Encoding");
+      
+      // Generating HTML response
       sb.Append("<html><head>");
+      
+      // CSS style
       sb.Append("<style>");
       sb.Append("body { font-family: courier new; margin: 20px; }");
       sb.Append(".container { width: 60%; margin: 0 auto; }");
@@ -27,19 +39,13 @@ namespace DNWS
       sb.Append(".item { margin-bottom: 8px; }");
       sb.Append("</style>");
       sb.Append("</head><body>");
-
+      
+      // HTML body
       sb.Append("<div class='container'>");
       sb.Append("<div class='box'>");
       sb.Append("<div class='title'>Client INFORMATION:</div>");
-
-      // Accessing client's IP address and port number
-      string clientIP_Port = request.getPropertyByKey("RemoteEndPoint");
-      string clientIP = clientIP_Port.Split(':')[0];
-      string clientPort = clientIP_Port.Split(':')[1];
-      string browserInfo = request.getPropertyByKey("User-Agent");
-      string acceptLanguage = request.getPropertyByKey("Accept-Language");
-      string acceptEncoding = request.getPropertyByKey("Accept-Encoding");
-
+      
+      // Client information
       sb.Append("<div class='item'>Client IP Address: " + clientIP + "</div>");
       sb.Append("<div class='item'>Client Port: " + clientPort + "</div>");
       sb.Append("<div class='item'>Browser Information: " + browserInfo + "</div>");
@@ -47,8 +53,8 @@ namespace DNWS
       sb.Append("<div class='item'>Accept Encoding: " + acceptEncoding + "</div>");
 
       sb.Append("</div></div>");
-
       sb.Append("</body></html>");
+      
       response = new HTTPResponse(200);
       response.body = Encoding.UTF8.GetBytes(sb.ToString());
       return response;
