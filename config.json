@@ -3,6 +3,13 @@
     "Port": "8080",
     "Plugins" : [
         {
+            "Path" : "client",
+            "Class" : "DNWS.ClientPlugin",
+            "Preprocessing" : "true",
+            "Postprocessing" : "false",
+            "Singleton" : "false"
+        },
+        {
             "Path" : "stat",
             "Class" : "DNWS.StatPlugin",
             "Preprocessing" : "true",
@@ -10,7 +17,7 @@
             "Singleton" : "false"
         },
         {
-            "Path" : "ox",
+            "Path" : "ox",  
             "Class" : "DNWS.OXPlugin",
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
