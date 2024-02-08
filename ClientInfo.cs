@@ -45,13 +45,11 @@ namespace DNWS
       StringBuilder sb = new StringBuilder();
 
       sb.Append("<html><head>");
-
       sb.Append($"Client IP Address: {clientIP} <br/>");
       sb.Append($"Client Port: {clientPort}<br/>");
       sb.Append($"Browser Information: {browserInfo} <br/>");
       sb.Append($"Accept Language: {acceptLanguage} <br/>");
       sb.Append($"Accept Encoding: {acceptEncoding} <br/>");
-
       sb.Append("</div></div>");
       sb.Append("</body></html>");
 
