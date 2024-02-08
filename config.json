@@ -1,6 +1,7 @@
 ﻿{
     "DocumentRoot": ".",
     "Port": "8080",
+    "Threading": "multi",
     "Plugins" : [
         {
             "Path" : "stat",
@@ -24,6 +25,12 @@
         {
             "Path" : "clientinfo",
             "Class" : "DNWS.ClientInfoPlugin",
+            "Preprocessing" : "false",
+            "Postprocessing" :"false" 
+        },
+        {
+            "Path" : "thread",
+            "Class" : "DNWS.ThreadPlugin",
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
         }
