@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Sockets;
@@ -278,7 +278,7 @@ namespace DNWS
         /// <summary>
         /// Server starting point
         /// </summary>
-        public void Start()
+       public void Start()
         {
             _port = Convert.ToInt32(Program.Configuration["Port"]);
             IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, _port);
@@ -296,7 +296,18 @@ namespace DNWS
                     // Get one, show some info
                     _parent.Log("Client accepted:" + clientSocket.RemoteEndPoint.ToString());
                     HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
-                    hp.Process();
+
+                    if (Program.Configuration["Threading"].ToLower() == "multi")
+                    {
+                        Thread thread = new Thread(new ParameterizedThreadStart(ThreadProc));
+                        thread.Start(new TaskInfo(hp));
+
+                    }
+                    else
+                    {
+                        // Single-threading
+                        hp.Process();
+                    }
                 }
                 catch (Exception ex)
                 {
