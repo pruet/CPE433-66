@@ -300,8 +300,6 @@ namespace DNWS
                     if(Program.Configuration["Threading"].ToLower() == "multi")
                     {
                         //Multi
-                        //TaskInfo ti = new TaskInfo(hp);
-                        //ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc), ti);
                         
                         Thread thread = new Thread(new ParameterizedThreadStart(ThreadProc));
                         thread.Start(new TaskInfo(hp));
