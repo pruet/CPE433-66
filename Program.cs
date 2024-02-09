@@ -296,7 +296,18 @@ namespace DNWS
                     // Get one, show some info
                     _parent.Log("Client accepted:" + clientSocket.RemoteEndPoint.ToString());
                     HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
-                    hp.Process();
+
+                    if(Program.Configuration["Threading"].ToLower() == "multi")
+                    {
+                        //multi thread
+                        TaskInfo ti = nnew TaskInfo(hp);
+                        Threadpool.QueueUserWorkItem(new WaitCallBack(ThreadProc), ti);
+                    }
+                    else
+                    {
+                        //single thread
+                        hp.Process();
+                    }
                 }
                 catch (Exception ex)
                 {
