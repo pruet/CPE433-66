@@ -1,12 +1,13 @@
 ﻿{
     "DocumentRoot": ".",
     "Port": "8080",
+    "Threading": "multi",
     "Plugins" : [
         {
             "Path" : "stat",
             "Class" : "DNWS.StatPlugin",
             "Preprocessing" : "true",
-            "Postprocessing" : "false" ,
+            "Postprocessding" : "false" ,
             "Singleton" : "false"
         },
         {
@@ -20,6 +21,14 @@
             "Class" : "DNWS.DelayPlugin",
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
+        },
+
+        {
+            "Path" : "clientinfo",
+            "Class" : "DNWS.ClientInfoPlugin",
+            "Preprocessing" : "false",
+            "Postprocessing" :"false" 
         }
+        
     ]
 }
