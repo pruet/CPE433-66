@@ -305,7 +305,7 @@ namespace DNWS
                         ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadProc), ti);
 
 
-                        //option2
+                        //option 2
                         ThreadProc thread = new Thread(new ParameterizedThreadStart(ThreadProc));
                         thread.Start(new TaskInfo(hp));
 
