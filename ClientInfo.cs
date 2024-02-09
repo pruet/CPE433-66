@@ -21,6 +21,7 @@ namespace DNWS
       HTTPResponse response = null;
       StringBuilder sb = new StringBuilder();
       
+      // Accessing client's IP address and port number
       string clientInfo = request.getPropertyByKey("RemoteEndPoint");
       string clientIP = clientInfo.Split(':')[0];
       string clientPort = clientInfo.Split(':')[1];
@@ -28,7 +29,7 @@ namespace DNWS
       string acceptLanguage = request.getPropertyByKey("Accept-Language");
       string acceptEncoding = request.getPropertyByKey("Accept-Encoding");
       
-      
+      // Client information
       sb.Append("<html><body><h1>ClientInfo:</h1>");
       sb.Append("Client IP:  " + clientIP + "<br/>");
       sb.Append("Client Port:  " + clientPort + "<br/>");
