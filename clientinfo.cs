@@ -19,6 +19,7 @@ namespace DNWS
       HTTPResponse response = null;
       StringBuilder sb = new StringBuilder();
 
+      // Siripa Aungwattana 650615032
       string client_info = request.getPropertyByKey("RemoteEndPoint");
       string client_ip = client_info.Split(':')[0];
       string client_port = client_info.Split(':')[1];
