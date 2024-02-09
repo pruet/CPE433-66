@@ -300,7 +300,7 @@ namespace DNWS
                     if(Program.Configuration["Threading"].ToLower() == "multi")
                     {
                         //multi thread
-                        TaskInfo ti = nnew TaskInfo(hp);
+                        TaskInfo ti = new TaskInfo(hp);
                         Threadpool.QueueUserWorkItem(new WaitCallBack(ThreadProc), ti);
                     }
                     else
