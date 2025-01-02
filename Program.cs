@@ -297,15 +297,7 @@ namespace DNWS
                     // Get one, show some info
                     _parent.Log("Client accepted:" + clientSocket.RemoteEndPoint.ToString());
                     HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
-                    
-                    if (threadingMode.Equals("Multi", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Thread thread = new Thread(new ThreadStart(hp.Process));
-                        thread.Start();
-                    }
-                    else{
-                        hp.Process();
-                    }
+                    hp.Process();
                 }
                 catch (Exception ex)
                 {
